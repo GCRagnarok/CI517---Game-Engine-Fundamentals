@@ -6,7 +6,7 @@ MyGame::MyGame() : AbstractGame(), playerRect(100, 100, 50, 50), box1Rect(700, 1
 	gfx->setVerticalSync(true);
 
 	//play background music
-	sfx->playMP3(backgroundMusic, 0);
+	sfx->playMP3(backgroundMusic, -1);
 
 	//set collider names to define which collider is being collided with
 	playerCollider.name = "player";
@@ -52,9 +52,9 @@ MyGame::MyGame() : AbstractGame(), playerRect(100, 100, 50, 50), box1Rect(700, 1
 	//set rigidbody values
 	playerRigidbody.setRigidbodyValues(3, 3);
 
-	box1Rigidbody.setRigidbodyValues(2, 2);
+	box1Rigidbody.setRigidbodyValues(3, 2.5);
 
-	box2Rigidbody.setRigidbodyValues(2, 1.5);
+	box2Rigidbody.setRigidbodyValues(1, 1.5);
 
 	//set startingAirResistance value
 	playerRigidbody.startingAirResistance = playerRigidbody.airResistance;
@@ -295,9 +295,9 @@ void MyGame::update() {
 	//push rigidbodies
 	box1Rigidbody.pushedHorizontallyByOtherCollider(box1Rect, box2Rect, box1Collider, box2Collider, box2Rigidbody);
 
-	box2Rigidbody.pushedHorizontallyByOtherCollider(box2Rect, box1Rect, box2Collider, box1Collider, box1Rigidbody);
-
 	box1Rigidbody.pushedHorizontallyByOtherCollider(box1Rect, playerRect, box1Collider, playerCollider, playerRigidbody);
+
+	box2Rigidbody.pushedHorizontallyByOtherCollider(box2Rect, box1Rect, box2Collider, box1Collider, box1Rigidbody);
 
 	box2Rigidbody.pushedHorizontallyByOtherCollider(box2Rect, playerRect, box2Collider, playerCollider, playerRigidbody);
 
