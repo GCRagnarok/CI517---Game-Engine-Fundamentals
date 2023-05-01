@@ -303,7 +303,7 @@ void Physics::applyTotalPositiveVelocityX(Collision pCollider, Physics pAddition
 	if (force > pAdditionalRigidbody.force)
 	{
 		float totalForce = force - pAdditionalRigidbody.force;
-		velocity.x = totalForce;
+		velocity.x =  totalForce;
 	}
 	if (force < pAdditionalRigidbody.force)
 	{
